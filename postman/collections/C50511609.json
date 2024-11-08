@@ -1,0 +1,469 @@
+{
+	"info": {
+		"_postman_id": "2c99ecdc-46b8-4633-beaa-5689bb617fc7",
+		"name": "GeoIP_C50511609 Block list control",
+		"description": "<img src=\"https://content.pstmn.io/f68d6e34-79e8-495e-bd5f-d8b8beb506c1/U25pcGFzdGVfMjAyNC0xMC0zMF8yMS01Mi0yNC5wbmc=\" alt=\"\">",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39045251",
+		"_collection_link": "https://hp7262.postman.co/workspace/d06bea67-87b7-4645-b814-6460bab09912/collection/39045251-2c99ecdc-46b8-4633-beaa-5689bb617fc7?action=share&source=collection_link&creator=39045251"
+	},
+	"item": [
+		{
+			"name": "Show GeoIP version",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required fields - db_built_at, db_updated_at, and db_md5\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.have.property('db_built_at');\r",
+							"    pm.expect(responseData).to.have.property('db_updated_at');\r",
+							"    pm.expect(responseData).to.have.property('db_md5');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"geo_add_flag\", false);\r",
+							"pm.collectionVariables.set(\"geo_delete_flag\", false);\r",
+							"pm.collectionVariables.set(\"geo_query_flag\", 0);\r",
+							"\r",
+							"const token_url = pm.environment.get(\"oauth\") + \"/token\";\r",
+							"const geo_client_id = pm.environment.get(\"geo_client_id\");\r",
+							"const geo_client_secret = pm.environment.get(\"geo_client_secret\");\r",
+							"const encoded_auth = Buffer.from(geo_client_id + \":\" + geo_client_secret).toString('base64');\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url: token_url,\r",
+							"    method: \"POST\",\r",
+							"    header: {\r",
+							"        \"Content-Type\": \"application/x-www-form-urlencoded\",\r",
+							"        \"Authorization\": \"Basic \" + encoded_auth\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: \"urlencoded\",\r",
+							"        urlencoded: 'grant_type=client_credentials'\r",
+							"    }\r",
+							"}, function (err, response) {\r",
+							"    if (!err) {\r",
+							"        const responseData = response.json();\r",
+							"        console.log(responseData);\r",
+							"\r",
+							"        pm.expect(responseData.access_token).to.exist.and.to.not.be.empty;\r",
+							"        pm.collectionVariables.unset('geo_client_token');\r",
+							"        pm.collectionVariables.set('geo_client_token', responseData.access_token);\r",
+							"    } else {\r",
+							"        const errData = err.json();\r",
+							"        console.log(errData);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/Version",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"Version"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List blocked countries and regions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var add_flag = pm.collectionVariables.get(\"geo_add_flag\");\r",
+							"var delete_flag = pm.collectionVariables.get(\"geo_delete_flag\");\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify the schema of the response\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.property('count');\r",
+							"    pm.expect(responseData).to.have.property('country_codes');\r",
+							"    pm.expect(responseData.count).to.be.a('number');\r",
+							"    pm.expect(responseData.country_codes).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Count of block list is correct\", function () {\r",
+							"    if (add_flag) {\r",
+							"        if (delete_flag) {\r",
+							"            pm.expect(responseBody[\"count\"]).to.eql(0);\r",
+							"        } else {\r",
+							"            pm.expect(responseBody[\"count\"]).to.eql(2);\r",
+							"        }\r",
+							"    } else {\r",
+							"        pm.expect(responseBody[\"count\"]).to.eql(0);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"var query_flag = pm.collectionVariables.get(\"geo_query_flag\");\r",
+							"pm.collectionVariables.set(\"geo_query_flag\", query_flag + 1);\r",
+							"pm.execution.setNextRequest(\"Get location information by IP address\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/ListBlockedCountriesAndRegions",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"ListBlockedCountriesAndRegions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add blocked countries and regions into list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var requestBody = JSON.parse(pm.request[\"body\"][\"raw\"]);\r",
+							"var responseBody = pm.response.json();\r",
+							"pm.collectionVariables.set(\"geo_add_flag\", false);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.collectionVariables.set(\"geo_add_flag\", true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Count of add list is correct\", function () {\r",
+							"    pm.expect(responseBody[\"count\"]).to.eql(requestBody[\"country_codes\"].length);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields - name, alpha2, alpha3, and numeric\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    responseData.country_codes.forEach(country => {\r",
+							"        pm.expect(country).to.have.property('name');\r",
+							"        pm.expect(country).to.have.property('alpha2');\r",
+							"        pm.expect(country).to.have.property('alpha3');\r",
+							"        pm.expect(country).to.have.property('numeric');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.execution.setNextRequest(\"List blocked countries and regions\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"country_codes\": [\r\n    \"US\",\r\n    \"CN\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/AddBlockedCountriesAndRegions",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"AddBlockedCountriesAndRegions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete blocked countries and regions from list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"geo_delete_flag\", false);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.collectionVariables.set(\"geo_delete_flag\", true);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response body schema is valid JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.execution.setNextRequest(\"List blocked countries and regions\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"country_codes\": [\r\n    \"US\",\r\n    \"CN\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/DeleteBlockedCountriesAndRegions",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"DeleteBlockedCountriesAndRegions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get location information by IP address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var add_flag = pm.collectionVariables.get(\"geo_add_flag\");\r",
+							"var delete_flag = pm.collectionVariables.get(\"geo_delete_flag\");\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    const requiredFields = [\"ip_address\", \"embargoed\", \"blocked\", \"country_code\", \"country\", \"state_code\", \"state\", \"city\", \"continent_code\", \"continent\", \"postal_code\", \"location\", \"lang\"];\r",
+							"    \r",
+							"    requiredFields.forEach(field => {\r",
+							"        pm.expect(responseData).to.have.property(field);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Set of block list is correct\", function () {\r",
+							"    console.log(add_flag);\r",
+							"    console.log(delete_flag);\r",
+							"    if (add_flag) {\r",
+							"        if (delete_flag) {\r",
+							"            pm.expect(responseBody[\"blocked\"]).to.eql(false);\r",
+							"        } else {\r",
+							"            pm.expect(responseBody[\"blocked\"]).to.eql(true);\r",
+							"        }\r",
+							"    } else {\r",
+							"        pm.expect(responseBody[\"blocked\"]).to.eql(false);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"var query_flag = pm.collectionVariables.get(\"geo_query_flag\");\r",
+							"switch (query_flag) \r",
+							"{ \r",
+							"  case 1:\r",
+							"    pm.execution.setNextRequest(\"Add blocked countries and regions into list\"); \r",
+							"    break; \r",
+							"  case 2:\r",
+							"    pm.execution.setNextRequest(\"Delete blocked countries and regions from list\");\r",
+							"    break; \r",
+							"  default:\r",
+							"    break; \r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/GetLocationByIP?ip_address=15.65.196.33&lang=en&check_embargoed=true&check_blocked=true",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"GetLocationByIP"
+					],
+					"query": [
+						{
+							"key": "ip_address",
+							"value": "15.65.196.33"
+						},
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "check_embargoed",
+							"value": "true"
+						},
+						{
+							"key": "check_blocked",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "geo_client_token",
+			"value": ""
+		},
+		{
+			"key": "geo_add_flag",
+			"value": ""
+		},
+		{
+			"key": "geo_delete_flag",
+			"value": ""
+		},
+		{
+			"key": "geo_query_flag",
+			"value": ""
+		}
+	]
+}
