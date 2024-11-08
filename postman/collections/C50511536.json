@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "25ba4f09-f1c7-43b0-85c0-58448f0d48ef",
+		"name": "GeoIP_C50511536 Get basic information",
+		"description": "<img src=\"https://content.pstmn.io/99c214b3-a963-474a-9456-43a4680332db/U25pcGFzdGVfMjAyNC0xMC0zMF8yMi0wNS01OS5wbmc=\" alt=\"\">",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39045251",
+		"_collection_link": "https://hp7262.postman.co/workspace/Defenders_TestCase~d06bea67-87b7-4645-b814-6460bab09912/collection/39045251-25ba4f09-f1c7-43b0-85c0-58448f0d48ef?action=share&source=collection_link&creator=39045251"
+	},
+	"item": [
+		{
+			"name": "Show GeoIP version",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required fields - db_built_at, db_updated_at, and db_md5\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.have.property('db_built_at');\r",
+							"    pm.expect(responseData).to.have.property('db_updated_at');\r",
+							"    pm.expect(responseData).to.have.property('db_md5');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"geo_add_flag\", false);\r",
+							"pm.collectionVariables.set(\"geo_delete_flag\", false);\r",
+							"pm.collectionVariables.set(\"geo_query_flag\", 0);\r",
+							"\r",
+							"const token_url = pm.environment.get(\"oauth\") + \"/token\";\r",
+							"const geo_client_id = pm.environment.get(\"geo_client_id\");\r",
+							"const geo_client_secret = pm.environment.get(\"geo_client_secret\");\r",
+							"const encoded_auth = Buffer.from(geo_client_id + \":\" + geo_client_secret).toString('base64');\r",
+							"\r",
+							"const response = await pm.sendRequest({\r",
+							"\turl: token_url,\r",
+							"\tmethod: \"POST\",\r",
+							"\theader: {\r",
+							"\t\t\"Content-Type\": \"application/x-www-form-urlencoded\",\r",
+							"\t\t\"Authorization\": \"Basic \" + encoded_auth\r",
+							"\t},\r",
+							"\tbody: {\r",
+							"\t\tmode: \"urlencoded\",\r",
+							"\t\turlencoded: 'grant_type=client_credentials'\r",
+							"\t}\r",
+							"});\r",
+							"\r",
+							"const responseData = response.json();\r",
+							"console.log(responseData);\r",
+							"pm.expect(responseData.access_token).to.exist.and.to.not.be.empty;\r",
+							"pm.collectionVariables.unset('geo_client_token');\r",
+							"pm.collectionVariables.set('geo_client_token', responseData.access_token);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/Version",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"Version"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List countries and regions without params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate the response schema for the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.property('count');\r",
+							"    pm.expect(responseData).to.have.property('elements').that.is.an('array');\r",
+							"    responseData.elements.forEach(function(element) {\r",
+							"        pm.expect(element).to.have.property('name');\r",
+							"        pm.expect(element).to.have.property('alpha2');\r",
+							"        pm.expect(element).to.have.property('alpha3');\r",
+							"        pm.expect(element).to.have.property('numeric');\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/ListCountriesAndRegions",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"ListCountriesAndRegions"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Afghanistan",
+							"disabled": true
+						},
+						{
+							"key": "alpha2",
+							"value": "AF",
+							"disabled": true
+						},
+						{
+							"key": "alpha3",
+							"value": "AFG",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List countries and regions with one param",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate the response schema for the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    const expected_result = {\r",
+							"    \"count\": 1,\r",
+							"    \"elements\": [\r",
+							"        {\r",
+							"            \"name\": \"Afghanistan\",\r",
+							"            \"alpha2\": \"AF\",\r",
+							"            \"alpha3\": \"AFG\",\r",
+							"            \"numeric\": \"004\"\r",
+							"        }\r",
+							"    ]\r",
+							"};\r",
+							"    console.log(responseData);\r",
+							"    console.log(expected_result);\r",
+							"    pm.expect(JSON.stringify(expected_result)).to.equal(JSON.stringify(responseData));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/ListCountriesAndRegions?name=Afghanistan",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"ListCountriesAndRegions"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Afghanistan"
+						},
+						{
+							"key": "alpha2",
+							"value": "AF",
+							"disabled": true
+						},
+						{
+							"key": "alpha3",
+							"value": "AFG",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List countries and regions with full params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate the response schema for the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    const expected_result = {\r",
+							"    \"count\": 1,\r",
+							"    \"elements\": [\r",
+							"        {\r",
+							"            \"name\": \"Afghanistan\",\r",
+							"            \"alpha2\": \"AF\",\r",
+							"            \"alpha3\": \"AFG\",\r",
+							"            \"numeric\": \"004\"\r",
+							"        }\r",
+							"    ]\r",
+							"};\r",
+							"    console.log(responseData);\r",
+							"    console.log(expected_result);\r",
+							"    pm.expect(JSON.stringify(expected_result)).to.equal(JSON.stringify(responseData));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{geo_client_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{geo_base_url}}/v1/GeoIpAPI/ListCountriesAndRegions?name=Afghanistan&alpha2=AF&alpha3=AFG",
+					"host": [
+						"{{geo_base_url}}"
+					],
+					"path": [
+						"v1",
+						"GeoIpAPI",
+						"ListCountriesAndRegions"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Afghanistan"
+						},
+						{
+							"key": "alpha2",
+							"value": "AF"
+						},
+						{
+							"key": "alpha3",
+							"value": "AFG"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "geo_client_token",
+			"value": ""
+		},
+		{
+			"key": "geo_add_flag",
+			"value": ""
+		},
+		{
+			"key": "geo_delete_flag",
+			"value": ""
+		},
+		{
+			"key": "geo_query_flag",
+			"value": ""
+		}
+	]
+}

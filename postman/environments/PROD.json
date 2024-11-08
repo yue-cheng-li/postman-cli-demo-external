@@ -1,0 +1,1119 @@
+{
+	"id": "2035ed95-703b-4efb-9d42-86383e269aa2",
+	"name": "2. PROD",
+	"values": [
+		{
+			"key": "*******************Variables***********************",
+			"value": "*******************Variables***********************",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "client_access_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "configid_saml",
+			"value": "04c1d8a2-5344-42b9-b416-860f55e93698",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "config_id_amazon",
+			"value": "827f2369-4270-4d60-8025-d67969aefeef",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "config_id",
+			"value": "6d745146-6321-40e0-9ba2-82db43a1bc51",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "config_id_azure",
+			"value": "2c55766a-5b56-4403-8842-39fd00852fae",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "unqualifiedUserAzureIdConfigForOauth",
+			"value": "d85489ed-a1be-4487-a026-a7f2bc22775f",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "redirect_uri",
+			"value": "http://localhost:8080/callback.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "redirect_uri_sqa",
+			"value": "https://www.google.com/",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "token_url",
+			"value": "{{oauth_host}}/oauth2/v1/token",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "stack",
+			"value": "prod",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "hpid_username",
+			"value": "hpocdefender+stratus001@gmail.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "hpid_password",
+			"value": "Test_1234",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "hpid_client_id",
+			"value": "68sObdumcz3d0YSgHQGOIYJRd59uoP2K",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "hpid_client_secret",
+			"value": "WE8WHpAzy1AuAsHaJnzzIfDvuBxQ0qfd",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "login_redirect_uri",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "hpid_login_redirect_uri",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "hpid_token_exchange",
+			"value": "https://directory.id.hp.com/directory/v1/oauth/token",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "hpid_env",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "csrf_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "region_endpoint_url",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "idsecret",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "****************Stratus Related********************",
+			"value": "****************Stratus Related********************",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "stratus_bridge_host",
+			"value": "stratus-bridge-extensibility.api.prod-us.hponecloud.io:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "stratus_host",
+			"value": "https://us1.api.ws-hp.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "stratus_oauth_token_endpoint",
+			"value": "https://authz.api.ws-hp.com/openid/v1/token",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "stratus_client_id",
+			"value": "Dooa1PrfCexxzcKluKotSDznZNsyV2Kk",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "stratus_client_secret",
+			"value": "rQi1Y0UM4y8n016w9VAmCtaifN1dt0Id",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "authz.redirect.url",
+			"value": "https://oauth-auth.oc.hp.com/callback",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "********************GRPC**********************",
+			"value": "********************GRPC**********************",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "user_aggregation",
+			"value": "user-aggregation-relationship.api.prod-us.hponecloud.io:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_grpc",
+			"value": "client-auth.api.prod-uw2.hponecloud.io:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "user_grpc",
+			"value": "user-identity.grpc.oc.hp.com:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "org_grpc",
+			"value": "organization-identity.grpc.oc.hp.com:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sa_grpc",
+			"value": "sa-identity.api.prod-uw2.hponecloud.io:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tokenvalidation_grpc",
+			"value": "token-validation-auth.oc.hp.com:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ruleEngine_grpc",
+			"value": "rule-engine-auth.oc.hp.com:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "rsr_grpc",
+			"value": "rsr-auth.grpc.oc.hp.com:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "aggregation_grpc",
+			"value": "aggregation-relationship.grpc.oc.hp.com:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "horizon_grpc",
+			"value": "horizon-user-horizon.grpc.oc.hp.com:443",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "****************Restful service********************",
+			"value": "****************Restful service********************",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "eventing_baseurl",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "seats_host",
+			"value": "https://seats-relationship.oc.hp.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "idplookup_baseUrl",
+			"value": "https://idp-lookup-auth.oc.hp.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "idpconfig_baseUrl",
+			"value": "https://idp-config-auth.oc.hp.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "idptokenM_baseUrl",
+			"value": "https://idp-tokenmgmt-auth.oc.hp.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "role_baseUrl",
+			"value": "https://roles-relationship.oc.hp.com/ocrel-roles",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "crr_url",
+			"value": "https://registry-relationship.oc.hp.com/ocrel-registry/v2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "crr_url_v3",
+			"value": "https://registry-relationship.oc.hp.com/v3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "oauth",
+			"value": "https://oauth-auth.oc.hp.com/oauth2/v1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "oauth_v2",
+			"value": "https://oauth-auth.oc.hp.com/oauth2/v2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "aggregation_baseUrl",
+			"value": "https://aggregation-relationship.oc.hp.com/aggregation",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "address_baseUrl",
+			"value": "https://address-identity.api.prod-uw2.hponecloud.io",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "aos_baseUrl",
+			"value": "https://autoonboarding-auth.oc.hp.com/id-auto-onboarding/v1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "purpose_baseUrl",
+			"value": "https://consent-datamanagement.api.prod-uw2.hponecloud.io",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "geolookup_baseUrl",
+			"value": "https://geo-lookup-auth.api.prod-uw2.hponecloud.io/v1/lookup",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "*********common testdata by manual**********",
+			"value": "*********reference: common testdata by manual**********",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "client_detachindirectadminister",
+			"value": "d77f6f73-bde3-41ce-9cf0-b603aa28126a",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_detachindirectadminister_secret",
+			"value": "Nd6fqDRh37eKEHJoESRvHjUK3KDgRVo7soW6CpqpT7gjedYeIn5t1R3l6LPn2fbf",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_token",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "user_access_token",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tenant_id",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "rootNode",
+			"value": "5c1c2547bf965dee00465a3b",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "OC_rootNode",
+			"value": "57d8c3f8-f932-43ed-acff-42d370f84e32",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "SQA_rootNode",
+			"value": "0952a948-4a97-48d9-93ee-3b97aec32320",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "adminrole_SQATenant",
+			"value": "af77fe12-9e9f-4145-8336-a50538bf20c1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "userrole_SQATenant",
+			"value": "2329ed66-6d99-4f17-9741-1c8944000054",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "role_user",
+			"value": "14d8126f-f5f8-4ab8-ac2a-103e3f90ffa9",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "role_admin",
+			"value": "2f1c6516-6bbb-4d96-8872-273cca574fa4",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_id_fullboundary",
+			"value": "58a333ee-2251-4653-a5eb-4f4a80a95e82",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_secret_fullboundary",
+			"value": "0e3KLR1nahmLNRglU082PdTFGKi53M8R7Mk3x5871xYslf9ysM5qSU2jDpm33pOv",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_id_delegate",
+			"value": "20641c91-4c68-4784-b86e-20d70cd80135",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_secret_delegate",
+			"value": "zL5jE32x6o795Ecyn6nbro2dDT78Q4xa7s081I8R4qB4h9aDg4Vc2PBuOIny4Ml3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_id_none",
+			"value": "03eca18b-91ca-4eb4-b5d2-1e9a14dbc6fa",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_secret_none",
+			"value": "crQ84qjjk145Z62lm2hq836hieaYjn7ecl11VcXc8I03e3ekGRP6vz5pnu7fqF0P",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "id_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "configid_google_sqatenant",
+			"value": "2498b866-41ec-4c4b-8efb-649b0d31c2e0",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid_azure_sqatenant",
+			"value": "ab051155-2b4d-4133-bcf0-bd1d3a725a0d",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid_hpid_sqatenant",
+			"value": "bcfbc7ae-f811-4dc4-8a63-c557e14850cf",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_id_6min",
+			"value": "930fa0f1-12da-4037-8046-9b307f55cb2a",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_id_12mins",
+			"value": "289e5ba5-5fe3-4a4a-bbf0-0e785e08122d",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "SQA_platformadmin",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "SQA_platformadmin_password",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "orgless_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "org_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "client_id_none_pkce",
+			"value": "036ee42e-9af3-41dd-bb87-b67ab1afaba2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "client_id_full_pkce",
+			"value": "354feca8-4e7c-4749-b514-23655289b3bc",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sqa_test_for_aos_hpid",
+			"value": "d2e28289-956c-4fba-8c3d-46afd4bae870",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sqa_test_for_aos_azure",
+			"value": "3deb4a2d-27d4-4448-afc4-4ae3d014abb3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sqa_test_for_aos_google",
+			"value": "cdc99ff2-27f3-4deb-a4df-ccfd8b2e8d8a",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "cloudID",
+			"value": "AQAAAAFvD-yh5gAAA-lrTq2N",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "refresh_token_reuse_window_client_id",
+			"value": "5c507042-1afe-40b7-9453-7877e9c2fea9",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "refresh_token_reuse_window_client_secret",
+			"value": "3bna7nPO9eo7ag9i5pA5BeX05139i37Y488eo6dbLGrIF2j96M5X2RTdt6WR3vQN",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "geo_client_id",
+			"value": "f9b7ac02-1150-4fae-8e91-dc67c3d8a7c7",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "geo_client_secret",
+			"value": "91Fgznc2BVSptPg1rzAnHwOVpCxq0j4K0iXdjdTpHaA2hOEAD3Y7MzdrY31e9s1U",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "geo_base_url",
+			"value": "https://geoip-integrations.us.oc.hp.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "-----------provider for public hpid configID-------",
+			"value": "-----------provider for public hpid configID-------",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "hash",
+			"value": "sqa@defender.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "**************Aggregation HTTP*******",
+			"value": "",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "user",
+			"value": "ROLE_TYPE_USER",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "admin",
+			"value": "ROLE_TYPE_ADMIN",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "***************Address service related*******",
+			"value": "",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "hpid_access_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "hpid_refresh_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "***************FF*************",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-628",
+			"value": "67ae012f-d43b-44ab-8613-8b98263e25d2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-646",
+			"value": "b67b478c-bbb4-4412-9ec0-6faa36f371b9",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-665",
+			"value": "af3e48f2-5ff7-4544-aa3a-141ce1c6ed3f",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-674",
+			"value": "b1a1cef4-f60e-4ebe-a1cb-5954b05e7dbb",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-573",
+			"value": "1543e38c-902f-11ee-b9d1-0242ac120002",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-577",
+			"value": "df6ea034-a831-44c5-86c1-2e1909284a6d",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-640",
+			"value": "43d0020b-85ce-4279-9622-8b0974806417",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-616",
+			"value": "df32989d-1c5e-4915-8fea-dd027fe0276b",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-598",
+			"value": "28f37b75-3b00-4822-ae61-0d9dae1f2a2b",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-583",
+			"value": "beabbd72-42f0-4112-a232-0e8c26405ddb",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-594",
+			"value": "294a2165-4485-462c-bb21-e9ae97bb4dcc",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-593",
+			"value": "11ba9296-d399-42fa-aa87-83bdf7af249e",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-597",
+			"value": "5e32be8b-110c-4b77-b6c9-b9db2a1079f2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-627",
+			"value": "5532112a-a53b-4f01-b864-9cbf177eb4a3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-574",
+			"value": "1a2d2813-9795-449c-ba29-a298c414d52e",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-668",
+			"value": "e0e1904c-c78a-4d29-a0d8-e7b45543f2ed",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-626",
+			"value": "7f27ae47-5810-421a-952a-bf02a04ae8b7",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-635",
+			"value": "3b14af1e-187c-4801-afab-0fb278c340dc",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-639",
+			"value": "73995966-c618-4faf-b8a8-a213da2b0b83",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-667",
+			"value": "68fa2a8a-756d-4706-8861-a44cb568a474",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-644",
+			"value": "71e09dd5-5c7c-4953-942f-59cabee7079c",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "one-664",
+			"value": "a496380c-5d60-4c0b-b6e9-1290ebf1bcab",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "OCPRI-1182",
+			"value": "4a237355-f2ae-4e49-93fd-6f762e5cdc91",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "serviceDes_UUID",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "provider_UUID",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "org_id",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "===========device=======",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "device_client_id",
+			"value": "077c8335-c2c9-484e-8afa-780184f9f567",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "device_code",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "user_code",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "userResourceId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "userEmail",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "hpid",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "=====Client credential===============",
+			"value": "=====Client credential===============",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "SQACLIENT_CLIENTID",
+			"value": "440a88e8-fc4d-4ba6-b60d-8cb186dea6de",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "SQACLIENT_CLIENTSECRET",
+			"value": "D2Vb3fP92lS240Tl5iEKjJUX60oEM20oI67o0fxUe8tMGmEBMxy59NhK38TXHH4g",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "horizon_clientID",
+			"value": "7eb278ec-4267-49a8-8422-f08fcdfeadb3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "horizon_client_secret",
+			"value": "NvAbuKzB2U0Mb4C2Ne534jb73KxSY94vNXGIcILZpr1S79HltxeX79bV9KNtCGF1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "revoke_clientID_1",
+			"value": "ec7261be-c1de-4cd1-b927-46808b9b75da",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "revoke_client_secret_1",
+			"value": "88Htd3C3AKU0Vy1qgD5wU0f3Uo816l98Ca5Apm3jtOmGtMYb4CF35eG1j03li1IP",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "revoke_clientID_2",
+			"value": "65ecc0b6-325a-4bb2-816b-2ed299b35dea",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "revoke_client_secret_2",
+			"value": "iat9Kt5ZkAbuuX4y4N98p2j1w5G89s0Tx1m59PaD6y9cTEk6z2Uoy2B9L14Yg4ux",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "clientID_one619",
+			"value": "110f016e-893b-446a-84ce-5af5125630a8",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "clientID_secret_one619",
+			"value": "r735eoAcy34h42OUN4ppM5Tp545D8R6kUwOTX7SpEMyA469W4a68mn131u7F5hsl",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "clientID_one626",
+			"value": "3e8c82a1-075f-4a75-b096-a46597e2ee99",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "clientID_secret_one626",
+			"value": "3vh7p5i4jf1CME9FW2HFX92jjfCici7m6TBWZ45y11gx026hd4AqgbMbmS8M35ds",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "=====Only for clientToken required",
+			"value": "====================",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "saValue",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "sqa_client_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "=====Role for one545",
+			"value": "==========",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "AssumRole_1",
+			"value": "dc36219d-6f43-4e9f-861c-01f7b966cd0b",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "SQA_RoleA",
+			"value": "2a0e7850-5a84-4c40-b207-9901e646d94d",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "SQA_RoleB",
+			"value": "dc36219d-6f43-4e9f-861c-01f7b966cd0b",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "flow_url",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "flow",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "create_session_flow",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "arkose",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "arkose_signup",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "blob",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "arkose_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "==========Auth ConfigID",
+			"value": "",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "configid-hpid-auth",
+			"value": "26f8f57e-22f1-4302-b012-402a779c07a3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-azure-auth",
+			"value": "20fd112a-1083-4a7e-a718-4037d7904fb5",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-google-auth",
+			"value": "b1b858fa-0c75-4ff5-abb3-a2acbe9fba42",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-amazon-auth",
+			"value": "30bae934-395f-45e8-af97-1c0af33f6a03",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-renater-auth",
+			"value": "b565cf98-e8e8-4e46-a761-90fcd36af569",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "===========AOS Configid",
+			"value": "",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "configid-hpid-aos-UserRole",
+			"value": "c69d24ae-e0e2-4ce5-946a-a4fcdd5a325d",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-hpid-aos-AdminRole",
+			"value": "7d7f9390-4634-4a61-b9e1-f9a745a77485",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-azure-aos-UserRole",
+			"value": "532c5405-ae7d-418f-b25e-b3e45fcac2ed",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-azure-aos-AdminRole",
+			"value": "841f518f-232e-497f-9ff3-6172df8ab803",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-google-aos-UserRole",
+			"value": "a01a965f-89b5-4119-bb11-764a9a351e4c",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-google-aos-AdminRole",
+			"value": "fff18a27-0e04-4e4b-baa7-ed9ccf5e41ac",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-amazon-aos-UserRole",
+			"value": "c484b2fb-73ad-4f6b-9202-509d155c3a8f",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-amazon-aos-AdminRole",
+			"value": "9a15a370-fadd-43c3-ac61-864617f29b00",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-renater-aos-UserRole",
+			"value": "61b764b3-627f-4e62-829f-93e9483ea0c1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "configid-renater-aos-AdminRole",
+			"value": "131318da-6725-48d7-b9e2-0cc358062df7",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "horizonUserIds",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-11-08T05:34:57.120Z",
+	"_postman_exported_using": "Postman/11.18.2"
+}
