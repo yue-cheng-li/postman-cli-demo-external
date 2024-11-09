@@ -13,25 +13,25 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # run-postman-collection:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v4
+  run-postman-collection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: '16'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-  #     - name: Install Newman
-  #       run: npm install -g newman
+      - name: Install Newman
+        run: npm install -g newman
 
-  #     - name: Run collection GeoIP_C50511536 Get basic information
-  #       run: newman run postman/collections/C50511536.json -e postman/environments/PROD.json
+      - name: Run collection GeoIP_C50511536 Get basic information
+        run: newman run postman/collections/C50511536.json -e postman/environments/PROD.json
 
-  #     - name: Run collection GeoIP_C50511609 Block list control
-  #       run: newman run postman/collections/C50511609.json -e postman/environments/PROD.json
+      - name: Run collection GeoIP_C50511609 Block list control
+        run: newman run postman/collections/C50511609.json -e postman/environments/PROD.json
 
   automated-api-tests:
     runs-on: ubuntu-latest
